@@ -5,7 +5,6 @@
 
 int main(){
 	//Variables
-	
 	char strg[MAX_PALABRAS][MAX_CHAR];
 	char temp[MAX_CHAR];
 	int i = 0;
@@ -15,20 +14,10 @@ int main(){
 
 	//Punteros
 	FILE* p_file;
-	char* p_strg[MAX_PALABRAS][MAX_CHAR];
-	char* p_temp[MAX_CHAR];
 	int* p_lngTo;
 	int* p_lngTe;
-	//p_strg = &strg[0][0];
-	//p_temp = &temp[0];
 	p_lngTo = &longTotal;
 	p_lngTe = &longTemp;
-
-	Inicializamos los arrays
-	for(j=0; j<MAX_PALABRAS; j++){
-		strcpy(strg[j], "");
-	}
-	strcpy(temp,"");
 
 	p_file = fopen("Entrada2e.txt", "r");		//Abrimos el archivo de texto
 	if(!p_file){return 1;}						//Comprobamos que se ha abierto
