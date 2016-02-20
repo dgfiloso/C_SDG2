@@ -15,24 +15,20 @@ int main(){
 
 	//Punteros
 	FILE* p_file;
-	char* p_strg;
-	char* p_temp;
+	char* p_strg[MAX_PALABRAS][MAX_CHAR];
+	char* p_temp[MAX_CHAR];
 	int* p_lngTo;
 	int* p_lngTe;
-	p_strg = &strg[0][0];
-	p_temp = &temp[0];
+	//p_strg = &strg[0][0];
+	//p_temp = &temp[0];
 	p_lngTo = &longTotal;
 	p_lngTe = &longTemp;
 
-	//Inicializamos los arrays
+	Inicializamos los arrays
 	for(j=0; j<MAX_PALABRAS; j++){
-		for(k=0; k<MAX_CHAR; k++){
-			*(p_strg+j+k) = "";
-		}
+		strcpy(strg[j], "");
 	}
-	for(j=0;j<MAX_CHAR; j++){
-		*(p_temp+j)="";
-	}
+	strcpy(temp,"");
 
 	p_file = fopen("Entrada2e.txt", "r");		//Abrimos el archivo de texto
 	if(!p_file){return 1;}						//Comprobamos que se ha abierto
@@ -44,30 +40,34 @@ int main(){
 		if(feof(p_file)){
 			break;
 		}
-		fscanf(p_file, "%s", p_strg + i);
+		fscanf(p_file, "%s", strg[i]);
 		i++;
-		p_lngTo++;
+		longTotal++;
 	}
 
-	for(j=0; j<*p_lngTo; j++){
-		printf("%s " , *(p_strg + j));
+	//Imprimir por pantalla el array sin ordenar
+	for(j=0; j<longTotal; j++){
+		printf("%s " , strg[j]);
 	}
+	printf("\n");
 
 	*p_lngTe = *p_lngTo;
-
-	while(*p_lngTe > 0){
-		for(k=0; k<*p_lngTe; k++){
-			if(strcmp(p_strg+k,p_strg+k + 1)>0){
-				*p_temp = *(p_strg+k+1);
-				*(p_strg+k+1) = *(p_strg+k);
-				*(p_strg+k) = *p_temp;
+	
+	//Ordenamos el array de menor a mayor
+	while(longTemp > 0){
+		for(k=0; k<(longTemp-1); k++){
+			if(strcmp(strg[k+1],strg[k])>0){
+				strcpy(temp,strg[k+1]);
+				strcpy(strg[k+1] , strg[k]);
+				strcpy(strg[k] , temp);
 			}
 		}
-		p_lngTe -= 1;
+		longTemp--;
 	}
 
+	//Imprimir por pantalla el array ordenado
 	for(l=0; l<*p_lngTo; l++){
-		printf("%s " , *(p_strg + l));
+		printf("%s " , strg[l] );
 	}
 	
 	fclose(p_file);
