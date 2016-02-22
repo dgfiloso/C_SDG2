@@ -45,7 +45,8 @@ int main(){
 	//Ordenamos el array de menor a mayor
 	while(longTemp > 0){
 		for(k=0; k<(longTemp-1); k++){
-			if(strcmp(strg[k+1],strg[k])>0){
+			if(strlen(strg[k])>strlen(strg[k+1])){
+			//if(strcmp(strg[k],strg[k+1])>0){
 				strcpy(temp,strg[k+1]);
 				strcpy(strg[k+1] , strg[k]);
 				strcpy(strg[k] , temp);
