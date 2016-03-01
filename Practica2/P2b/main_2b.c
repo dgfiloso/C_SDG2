@@ -12,7 +12,7 @@ int main(){
 	ptr_ch = &carac;
 	ptr_num = &num;
 
-	ptr_file = fopen("Entrada2b.txt","r");
+	ptr_file = fopen("/root/practica2/Entrada2b.txt","r");
 	if(!ptr_file){return 1;}
 	while(1){
 		if(feof(ptr_file)){

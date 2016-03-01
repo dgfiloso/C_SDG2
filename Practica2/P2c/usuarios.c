@@ -10,9 +10,6 @@ int Busca_por_DNI(int DNI, int Num_usuarios, Usuario *repositorio){
 		if(DNI == repositorio[i].DNI){
 			printf("Nombre y apellido del usuario con DNI %d : %s %s \n", DNI, repositorio[i].Nombre, repositorio[i].Apellido);
 			break;
-		} else {
-			printf("No hay ningun usuario con ese DNI");
-			break;
 		}
 	}
 	return 0;
@@ -40,7 +37,7 @@ int main(){
 	p_fechaNac = &fechaNac;
 	p_baseDatos = &baseDatos[0];
 
-	ptr_file = fopen("Usuarios.txt","r");
+	ptr_file = fopen("/root/practica2/Usuarios.txt","r");
 	if(!ptr_file){return 1;}
 	while(1){
 		if(feof(ptr_file)){

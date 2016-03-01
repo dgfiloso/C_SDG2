@@ -2,6 +2,7 @@
 #include <string.h>
 #define MAX_PALABRAS 100
 #define MAX_CHAR 25
+//
 
 int main(){
 	//Variables
@@ -19,7 +20,11 @@ int main(){
 	p_lngTo = &longTotal;
 	p_lngTe = &longTemp;
 
-	p_file = fopen("Entrada2e.txt", "r");		//Abrimos el archivo de texto
+	//Inicializacion de longTotal y longTemp
+	*p_lngTo = 0;
+	*p_lngTe = 0;
+
+	p_file = fopen("/root/practica2/Entrada2e.txt", "r");		//Abrimos el archivo de texto
 	if(!p_file){return 1;}						//Comprobamos que se ha abierto
 	
 	//Realizamos un bucle que no termina hasta que se termine el fichero de texto.
@@ -45,8 +50,8 @@ int main(){
 	//Ordenamos el array de menor a mayor
 	while(longTemp > 0){
 		for(k=0; k<(longTemp-1); k++){
-			if(strlen(strg[k])>strlen(strg[k+1])){
-			//if(strcmp(strg[k],strg[k+1])>0){
+			//if(strlen(strg[k])>strlen(strg[k+1])){
+			if(strcmp(strg[k],strg[k+1])>0){
 				strcpy(temp,strg[k+1]);
 				strcpy(strg[k+1] , strg[k]);
 				strcpy(strg[k] , temp);

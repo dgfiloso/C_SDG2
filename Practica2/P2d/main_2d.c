@@ -12,10 +12,10 @@ int main(){
 	ptr_class = &class[0];
 
 	for(j=0; j<10; j++){
-		class[j] = 0;cd
+		class[j] = 0;
 	}
 	
-	ptr_file = fopen("Entrada2d.txt","r");
+	ptr_file = fopen("/root/practica2/Entrada2d.txt","r");
 	if(!ptr_file){return 1;}
 	while(1){
 		if(feof(ptr_file)){
